@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "Perfil de Usuario",
+      "description": "Información del policía que usa la aplicación.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "ID único de Firebase Auth" },
+        "name": { "type": "string", "description": "Nombre completo" },
+        "email": { "type": "string", "description": "Correo institucional" },
+        "badgeNumber": { "type": "string", "description": "Número de placa" },
+        "role": { "type": "string", "enum": ["policia", "admin"], "description": "Rol en el sistema" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "ComparendoReport": {
+      "title": "Relato de Comparendo",
+      "description": "Relatos generados y guardados por el policía.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "ID del policía que creó el relato" },
+        "articulo": { "type": "string", "description": "Artículo de la Ley 1801" },
+        "numeral": { "type": "string", "description": "Numeral del artículo" },
+        "ciudadano": { "type": "string", "description": "Nombre del ciudadano" },
+        "relato": { "type": "string", "description": "Contenido del relato generado" },
+        "descargos": { "type": "string", "description": "Manifestación del ciudadano" },
+        "mediacion": { "type": "boolean", "description": "Si se aplicó mediación policial" },
+        "fecha": { "type": "string", "format": "date-time" },
+        "location": { "type": "string", "description": "Coordenadas GPS" }
+      },
+      "required": ["userId", "articulo", "relato", "fecha"]
+    },
+    "SimulationResult": {
+      "title": "Resultado de Simulación",
+      "description": "Resultados de las evaluaciones en el simulador operativo.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "scenarioId": { "type": "string" },
+        "score": { "type": "number" },
+        "feedback": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "scenarioId", "score"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Colección de perfiles de usuario."
+    },
+    "/reports/{reportId}": {
+      "schema": "ComparendoReport",
+      "description": "Colección de relatos de comparendos."
+    },
+    "/simulations/{simId}": {
+      "schema": "SimulationResult",
+      "description": "Colección de resultados de simulaciones."
+    }
+  }
+}

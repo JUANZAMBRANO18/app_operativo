@@ -1,0 +1,7 @@
+{
+  "name": "Remix: App Operativo",
+  "description": "Asistente operativo avanzado para la Policía Nacional de Colombia basado en la Ley 1801 de 2016. Incluye generador de relatos, simulador de procedimientos y guía de defensa disciplinaria.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
