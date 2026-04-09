@@ -25,6 +25,7 @@ import {
   ExternalLink,
   Copy,
   ShieldAlert,
+  ShieldCheck,
   Download,
   XCircle,
   Check,
